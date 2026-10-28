@@ -1,0 +1,15 @@
+# Hand-trimmed for turbbench's model_adapter.py, which only imports
+# ReMATF_model.TMT_DC.TMT_MS (the restoration model) - NOT this repo's own
+# detection/distillation side (detr/lwdetr/pdetr, YOLO, mamba_ssm, pycocotools,
+# ultralytics, fairscale, clipiqa, ...), which Code/requirements.txt is mostly
+# geared towards and which turbbench never imports. torch/torchvision get routed
+# through PyTorch's own CUDA wheel index by setup_repo.py regardless of pins here.
+# TMT_DC.py's own imports: einops (rearrange), torchvision.ops.DeformConv2d, and
+# (via its SwinUnet_3D.py sibling import, even though swindef=False at runtime -
+# the module-level `from timm.models.layers import trunc_normal_` still executes
+# unconditionally) timm.
+torch
+torchvision
+einops
+timm
+numpy
